@@ -33,7 +33,7 @@ html, body {
 
 .mdl-card__media h1 {
   padding: 0 0 0 20px;
-  font-size: 30px;
+  font-size: 22px;
   font-weight: bold;
   color: #eee;
 }
@@ -44,18 +44,15 @@ html, body {
   margin-bottom: 20px;
 }
 
-footer .mdl-mini-footer {
-  height: 10px;
-}
-
 .mdl-layout-title {
   font-size: 26px;
 }
 
-.mdl-mini-footer {
-  height: 10px;
-}
-
 .page-content {
   padding: 15px;
+}
+
+#the-footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
