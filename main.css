@@ -1,0 +1,32 @@
+html, body {
+  font-family:'Roboto','Helvetica','Arial',sans-serif;
+}
+
+/*.mdl-card {*/
+  /*height: auto;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+/*}*/
+
+.mdl-card__media h2 {
+  padding: 10px 0 10px 20px;
+  font-weight: bold;
+  color: #333;
+}
+section.section--center {
+  max-width: 860px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mdl-layout-title {
+  font-size: 26px;
+}
+
+.mdl-mini-footer {
+  height: 10px;
+}
+
+.page-content {
+  padding: 15px;
+}
