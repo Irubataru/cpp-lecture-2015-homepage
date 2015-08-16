@@ -2,17 +2,27 @@ html, body {
   font-family:'Roboto','Helvetica','Arial',sans-serif;
 }
 
-/*.mdl-card {*/
-  /*height: auto;*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
-/*}*/
+.collapse-card .mdl-card__supporting-text {
+  max-height: 200px;
+}
+
+.collapse-card .fade {
+  display: block;
+  height: 100px;
+  background: linear-gradient(transparent,white 90px);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
 
 .mdl-card__media h2 {
   padding: 10px 0 10px 20px;
   font-weight: bold;
-  color: #333;
+  color: #eee;
 }
+
 section.section--center {
   max-width: 860px;
   margin-top: 20px;
