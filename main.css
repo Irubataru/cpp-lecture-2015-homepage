@@ -27,6 +27,10 @@ html, body {
   right: 5px;
 }
 
+.mdl-card__supporting-text {
+  color: #333;
+}
+
 .collapse-card .mdl-card__supporting-text {
   height: 200px;
 }
