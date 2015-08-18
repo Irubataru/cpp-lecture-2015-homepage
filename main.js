@@ -37,6 +37,13 @@
       }
 
       return $(this).animate(styles, animation_arguments, optional_function);
+    },
+    busy : function busy (new_state) {
+      if (new_state === undefined) {
+        return $(this).data("is-busy");
+      } else {
+        return $(this).data("is-busy", new_state);
+      }
     }
   });
 
@@ -56,10 +63,14 @@
         .removeData();
   }
 
-  function toggle_expand() {
-
+  function toggle_expand()
+  {
+    if ($(this).busy() )
+      return;
 
     var $this = $(this);
+    $this.busy(true);
+
     var $card = $(this).parent(".collapse-card");
     var $support_text = $(this).siblings(".mdl-card__supporting-text");
     var $fade_box = $(this).siblings(".fade");
@@ -73,6 +84,7 @@
         }, animate_time, function(){
           $card.removeClass("is-collapsed");
           $this.text("Less");
+          $this.busy(false);
         });
       $fade_box.animate({
           "opacity": 0
@@ -83,6 +95,7 @@
         }, animate_time, function(){
             $card.addClass("is-collapsed");
             $this.text("More");
+            $this.busy(false);
           });
       $fade_box.animate({
           "opacity": 1
@@ -90,15 +103,14 @@
     }
   }
 
-  function toggle_super_expand() {
-
-    if ($(this).data("busy")) {
-      return;
-    }
-    $(this).data("busy", true);
-
-    $this = $(this);
+  function toggle_super_expand()
+  {
     var $card = $(this).parent(".content-card");
+    if ($card.busy())
+      return;
+
+    $card.busy(true);
+
     var $support_text = $(this).siblings(".mdl-card__supporting-text");
     var $fade_box = $(this).siblings(".fade");
     var $expand_button = $(this).siblings(".expand-button");
@@ -113,7 +125,7 @@
       $support_text.animateSaved(["height","padding-top","padding-bottom"], animate_time, function(){
           $card.removeClass("super-collapsed");
           $expand_button.restoreCSS("display");
-          $this.data("busy", false);
+          $card.busy(false);
       });
       $fade_box.animateSaved("height",animate_props);
     } else {
@@ -128,7 +140,7 @@
         "padding-bottom": 0
       }, animate_time, function(){
           $card.addClass("super-collapsed");
-          $this.data("busy", false);
+          $card.busy(false);
       });
 
       $fade_box.animate({
