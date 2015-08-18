@@ -2,6 +2,10 @@
   $(document).ready(function() {
     setActiveTab(window.location.hash);
 
+    $("#collapse-all").click(function () {
+      $(".mdl-layout__tab-panel.is-active .content-card .mdl-card__title").click();
+      $(this).toggleClass("rotated");
+    });
     $(".collapse-card .expand-button").click(toggle_expand);
     $(".content-card .mdl-card__title").click(toggle_super_expand);
     $(".mdl-layout__tab-bar > a").click(reset_tab);
