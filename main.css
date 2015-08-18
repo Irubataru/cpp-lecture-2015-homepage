@@ -4,6 +4,7 @@ html, body {
 
 .mdl-card {
   min-height: 0px;
+  margin: 0;
 }
 
 .fade {
@@ -40,15 +41,20 @@ html, body {
   height: 200px;
 }
 
-.mdl-card__media h1 {
+.mdl-card__title {
+  background-color: #536DFE;
   padding: 0 0 0 20px;
+  height: auto;
+}
+
+.mdl-card__title h1 {
   font-size: 22px;
   font-weight: bold;
   color: #eee;
 }
 
 .section--center {
-  max-width: 860px;
+  max-width: 1600px;
   margin-top: 20px;
   margin-bottom: 20px;
 }

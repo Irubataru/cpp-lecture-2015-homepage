@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $(".collapse-card .expand-button").click(toggle_expand);
-  $(".collapse-card .mdl-card__media").click(toggle_super_expand);
+  $(".collapse-card .mdl-card__title").click(toggle_super_expand);
   $(".mdl-layout__tab-bar > a").click(reset_tab);
   $(".my-mail a").hover(function(){
     $(this).attr("href", "mailto:" + ["glesaaen", "th.physik.uni-frankfurt.de"].join('@'));
