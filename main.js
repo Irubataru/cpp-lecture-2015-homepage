@@ -1,5 +1,7 @@
 (function(){
   $(document).ready(function() {
+    setActiveTab(window.location.hash);
+
     $(".collapse-card .expand-button").click(toggle_expand);
     $(".content-card .mdl-card__title").click(toggle_super_expand);
     $(".mdl-layout__tab-bar > a").click(reset_tab);
@@ -46,6 +48,16 @@
       }
     }
   });
+
+  function setActiveTab(hash_string) {
+    if (!$(hash_string).length)
+      return;
+
+    $(".mdl-layout__tab-bar .is-active").removeClass("is-active")
+      .siblings('a[href="' + hash_string + '"]').addClass("is-active");
+    $(".mdl-layout__tab-panel.is-active").removeClass("is-active")
+      .siblings(hash_string).addClass("is-active");
+  }
 
   function reset_tab() {
     $(".content-card")
