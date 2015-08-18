@@ -1,91 +1,127 @@
-$(document).ready(function() {
-  $(".collapse-card .expand-button").click(toggle_expand);
-  $(".collapse-card .mdl-card__title").click(toggle_super_expand);
-  $(".mdl-layout__tab-bar > a").click(reset_tab);
-  $(".my-mail a").hover(function(){
-    $(this).attr("href", "mailto:" + ["glesaaen", "th.physik.uni-frankfurt.de"].join('@'));
+(function(){
+  $(document).ready(function() {
+    $(".collapse-card .expand-button").click(toggle_expand);
+    $(".content-card .mdl-card__title").click(toggle_super_expand);
+    $(".mdl-layout__tab-bar > a").click(reset_tab);
+    $(".my-mail a").hover(function(){
+      $(this).attr("href", "mailto:" + ["glesaaen", "th.physik.uni-frankfurt.de"].join('@'));
+    });
   });
-});
 
-function reset_tab() {
-  $(".collapse-card").addClass("is-collapsed");
-  $(".collapse-card").removeClass("super-collapsed");
-  $(".collapse-card .expand-button").text("More");
-  $('.mdl-card__supporting-text').removeAttr('style');
-  $('.fade').removeAttr('style');
-  $('.collapse-card .expand-button').removeAttr('style');
-  $('.mdl-card__supporting-text').removeAttr('data');
-  $('.fade').removeAttr('data');
-}
+  jQuery.fn.extend({
+    saveCSS: function (property) {
+      if (typeof(property) === "string") {
+        $(this).data(property, $(this).css(property));
+      } else if ($.isArray(property)) {
+        for (var i = 0; i < property.length; ++i)
+          $(this).data(property[i], $(this).css(property[i]));
+      }
+      return $(this);
+    },
+    restoreCSS: function (property) {
+      if (typeof(property) === "string") {
+        $(this).css(property, $(this).data(property));
+      } else if ($.isArray(property)) {
+        for (var i = 0; i < property.length; ++i)
+          $(this).css(property[i], $(this).data(property[i]));
+      }
+      return $(this);
+    },
+    animateSaved: function (property, animation_arguments, optional_function) {
+      var styles = {};
+      if (typeof(property) === "string") {
+        styles[property] = $(this).data(property);
+      } else if ($.isArray(property)) {
+        for (var i = 0; i < property.length; ++i)
+          styles[property[i]] = $(this).data(property[i]);
+      }
 
-function toggle_expand() {
-  var $card = $(this).parent(".collapse-card");
-  var is_collapsed = $card.hasClass("is-collapsed");
-  var $support_text = $(this).prev(".mdl-card__supporting-text");
-  var $fade_box = $(this).siblings(".fade");
-  var $this = $(this);
-  var animate_time = 500;
+      return $(this).animate(styles, animation_arguments, optional_function);
+    }
+  });
 
-  if (is_collapsed) {
-    var text_height = $support_text.prop("scrollHeight");
-    $support_text.animate({
-      "height": text_height}, animate_time, function(){
-        $card.removeClass("is-collapsed");
-        $this.text("Less");
-      });
-    $fade_box.animate({
-      "opacity": 0}, animate_time);
-  } else {
-    $support_text.animate({
-      "height": 200}, animate_time, function(){
-        $card.addClass("is-collapsed");
-        $this.text("More");
-      });
-    $fade_box.animate({
-      "opacity": 1}, animate_time);
+  function reset_tab() {
+    $(".content-card")
+      .addClass("is-collapsed")
+      .removeClass("super-collapsed")
+      .children(".expand-button")
+        .text("More")
+        .removeAttr("style")
+        .removeData()
+      .siblings(".mdl-card__supporting-text")
+        .removeAttr("style")
+        .removeData()
+      .siblings(".fade")
+        .removeAttr("style")
+        .removeData();
   }
-}
 
-function toggle_super_expand() {
-  var $card = $(this).parent(".collapse-card");
-  var is_collapsed = $card.hasClass("super-collapsed");
-  var $support_text = $(this).siblings(".mdl-card__supporting-text");
-  var $fade_box = $(this).siblings(".fade");
-  var $expand_button = $(this).siblings(".expand-button");
-  var animate_time = 500;
+  function toggle_expand() {
+    var $this = $(this);
+    var $card = $(this).parent(".collapse-card");
+    var $support_text = $(this).siblings(".mdl-card__supporting-text");
+    var $fade_box = $(this).siblings(".fade");
 
-  console.log("Click");
+    var animate_time = 500;
 
-  if (is_collapsed) {
-    $support_text.animate({
-      "height": $support_text.data("prev-height")}, animate_time, function(){
-        $card.removeClass("super-collapsed");
-        $expand_button.css("display","inline-block");
-        console.log("Stuff");
+    if ($card.hasClass("is-collapsed")) {
+      var text_height = $support_text.prop("scrollHeight");
+      $support_text.animate({
+          "height": text_height
+        }, animate_time, function(){
+          $card.removeClass("is-collapsed");
+          $this.text("Less");
+        });
+      $fade_box.animate({
+          "opacity": 0
+        }, animate_time);
+    } else {
+      $support_text.animate({
+        "height": 200
+        }, animate_time, function(){
+            $card.addClass("is-collapsed");
+            $this.text("More");
+          });
+      $fade_box.animate({
+          "opacity": 1
+        }, animate_time);
+    }
+  }
+
+  function toggle_super_expand() {
+    var $card = $(this).parent(".content-card");
+    var $support_text = $(this).siblings(".mdl-card__supporting-text");
+    var $fade_box = $(this).siblings(".fade");
+    var $expand_button = $(this).siblings(".expand-button");
+
+    var animate_time = 500;
+    var animate_props = {
+      duration: animate_time,
+      queue: false
+    };
+
+    if ($card.hasClass("super-collapsed")) {
+      $support_text.animateSaved(["height","padding-top","padding-bottom"], animate_time, function(){
+          $card.removeClass("super-collapsed");
+          $expand_button.restoreCSS("display");
       });
-    $support_text.animate({
-      "padding-top": $support_text.data("prev-padding-top")},
-      {queue: false, duration: animate_time});
-    $support_text.animate({
-      "padding-bottom": $support_text.data("prev-padding-bottom")},
-      {queue: false, duration: animate_time});
-    $fade_box.animate({
-      "height": $fade_box.data("prev-height")}, {queue: false, duration: animate_time});
-  } else {
-    $support_text.data( "prev-height", $support_text.css("height") );
-    $support_text.data( "prev-padding-top", $support_text.css("padding-top") );
-    $support_text.data( "prev-padding-bottom", $support_text.css("padding-bottom") );
-    $fade_box.data( "prev-height", $fade_box.css("height") );
-    $expand_button.css("display","none");
-    $support_text.animate({
-      "height": 0}, animate_time, function(){
+      $fade_box.animateSaved("height",animate_props);
+    } else {
+      $support_text.saveCSS(["height","padding-top","padding-bottom"]);
+      $expand_button.saveCSS("display");
+      $fade_box.saveCSS("height");
+
+      $expand_button.css("display","none");
+      $support_text.animate({
+        "height": 0,
+        "padding-top": 0,
+        "padding-bottom": 0
+      }, animate_time, function(){
         $card.addClass("super-collapsed");
       });
-    $support_text.animate({
-      "padding-top": 0}, {queue: false, duration: animate_time});
-    $support_text.animate({
-      "padding-bottom": 0}, {queue: false, duration: animate_time});
-    $fade_box.animate({
-      "height": 0}, {queue: false, duration: animate_time});
+
+      $fade_box.animate({
+        "height": 0}, animate_props);
+    }
   }
-}
+})();
