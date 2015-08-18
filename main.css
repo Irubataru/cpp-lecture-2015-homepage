@@ -2,6 +2,10 @@ html, body {
   font-family:'Roboto','Helvetica','Arial',sans-serif;
 }
 
+.mdl-card {
+  min-height: 0px;
+}
+
 .fade {
   display: none;
 }
@@ -28,6 +32,7 @@ html, body {
 }
 
 .mdl-card__supporting-text {
+  box-sizing: border-box;
   color: #333;
 }
 
@@ -54,6 +59,15 @@ html, body {
 
 .page-content {
   padding: 15px;
+}
+
+.link-card .md-card {
+  position: relative;
+}
+
+.link-card a {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
 }
 
 #the-footer {
