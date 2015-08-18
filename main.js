@@ -57,6 +57,8 @@
   }
 
   function toggle_expand() {
+
+
     var $this = $(this);
     var $card = $(this).parent(".collapse-card");
     var $support_text = $(this).siblings(".mdl-card__supporting-text");
@@ -89,6 +91,13 @@
   }
 
   function toggle_super_expand() {
+
+    if ($(this).data("busy")) {
+      return;
+    }
+    $(this).data("busy", true);
+
+    $this = $(this);
     var $card = $(this).parent(".content-card");
     var $support_text = $(this).siblings(".mdl-card__supporting-text");
     var $fade_box = $(this).siblings(".fade");
@@ -104,6 +113,7 @@
       $support_text.animateSaved(["height","padding-top","padding-bottom"], animate_time, function(){
           $card.removeClass("super-collapsed");
           $expand_button.restoreCSS("display");
+          $this.data("busy", false);
       });
       $fade_box.animateSaved("height",animate_props);
     } else {
@@ -117,7 +127,8 @@
         "padding-top": 0,
         "padding-bottom": 0
       }, animate_time, function(){
-        $card.addClass("super-collapsed");
+          $card.addClass("super-collapsed");
+          $this.data("busy", false);
       });
 
       $fade_box.animate({
