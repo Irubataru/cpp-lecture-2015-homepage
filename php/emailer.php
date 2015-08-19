@@ -30,11 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     . "Email: " . $email . "\nCourses: ";
 
   if ($ws13 == "on") {
-    $body .= "WS13 "
+    $body .= "WS13 ";
   }
 
   if ($ws14 == "on") {
-    $body .= "WS14 "
+    $body .= "WS14 ";
   }
 
   $body .= "\n"
