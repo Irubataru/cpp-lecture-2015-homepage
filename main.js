@@ -66,8 +66,9 @@
   function reset_tab() {
     $(".content-card")
       .addClass("is-collapsed")
-      .removeClass("super-collapsed")
-      .children(".expand-button")
+      .children(".mdl-card__title")
+        .removeClass("super-collapsed")
+      .siblings(".expand-button")
         .text("More")
         .removeAttr("style")
         .removeData()
@@ -76,7 +77,11 @@
         .removeData()
       .siblings(".fade")
         .removeAttr("style")
-        .removeData();
+        .removeData()
+      .siblings(".collapse-icon")
+        .removeClass("rotated");
+    $("#collapse-all")
+      .removeClass("rotated");
   }
 
   function toggle_expand()
@@ -180,6 +185,8 @@
       click_identifier += ".super-collapsed";
     else 
       click_identifier += ":not(.super-collapsed)";
+
+    console.log(click_identifier);
 
     $(click_identifier).click();
     $(this).toggleClass("rotated");
