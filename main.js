@@ -2,10 +2,7 @@
   $(document).ready(function() {
     setActiveTab(window.location.hash);
 
-    $("#collapse-all").click(function () {
-      $(".mdl-layout__tab-panel.is-active .content-card .mdl-card__title").click();
-      $(this).toggleClass("rotated");
-    });
+    $("#collapse-all").click(toggleCollapseAll);
     $(".collapse-card .expand-button").click(toggle_expand);
     $(".content-card .mdl-card__title").click(toggle_super_expand);
     $(".mdl-layout__tab-bar > a").click(reset_tab);
@@ -130,6 +127,7 @@
     var $support_text = $(this).siblings(".mdl-card__supporting-text");
     var $fade_box = $(this).siblings(".fade");
     var $expand_button = $(this).siblings(".expand-button");
+    var $this = $(this);
 
     var animate_time = 500;
     var animate_props = {
@@ -137,9 +135,9 @@
       queue: false
     };
 
-    if ($card.hasClass("super-collapsed")) {
+    if ($this.hasClass("super-collapsed")) {
       $support_text.animateSaved(["height","padding-top","padding-bottom"], animate_time, function(){
-          $card.removeClass("super-collapsed");
+          $this.removeClass("super-collapsed");
           $expand_button.restoreCSS("display");
           $card.busy(false);
       });
@@ -155,12 +153,35 @@
         "padding-top": 0,
         "padding-bottom": 0
       }, animate_time, function(){
-          $card.addClass("super-collapsed");
+          $this.addClass("super-collapsed");
           $card.busy(false);
       });
 
       $fade_box.animate({
         "height": 0}, animate_props);
     }
+  }
+
+  function toggleCollapseAll() {
+    if ($(this).busy())
+      return;
+
+    var $this = $(this);
+    $this.busy(true);
+
+    var click_identifier = ".mdl-layout__tab-panel.is-active .content-card .mdl-card__title";
+
+    if ($(this).hasClass("rotated"))
+      click_identifier += ".super-collapsed";
+    else 
+      click_identifier += ":not(.super-collapsed)";
+
+    $(click_identifier).click();
+    $(this).toggleClass("rotated");
+
+    setTimeout(function () {
+     $this.busy(false); 
+    }, 500);
+    
   }
 })();
