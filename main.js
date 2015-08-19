@@ -5,6 +5,9 @@
     $("#collapse-all").click(toggleCollapseAll);
     $(".collapse-card .expand-button").click(toggle_expand);
     $(".content-card .mdl-card__title").click(toggle_super_expand);
+    $(".content-card .collapse-icon").click(function () {
+      $(this).siblings(".mdl-card__title").click();
+    });
     $(".mdl-layout__tab-bar > a").click(reset_tab);
     $(".my-mail a").hover(function(){
       $(this).attr("href", "mailto:" + ["glesaaen", "th.physik.uni-frankfurt.de"].join('@'));
@@ -134,6 +137,8 @@
       duration: animate_time,
       queue: false
     };
+
+    $this.siblings(".collapse-icon").toggleClass("rotated");
 
     if ($this.hasClass("super-collapsed")) {
       $support_text.animateSaved(["height","padding-top","padding-bottom"], animate_time, function(){
