@@ -9,7 +9,7 @@
       $(this).siblings(".mdl-card__title").click();
     });
     $(".mdl-layout__tab-bar > a").click(reset_tab);
-    $(".my-mail a").hover(function(){
+    $(".my-mail").hover(function(){
       $(this).attr("href", "mailto:" + ["glesaaen", "th.physik.uni-frankfurt.de"].join('@'));
     });
   });
