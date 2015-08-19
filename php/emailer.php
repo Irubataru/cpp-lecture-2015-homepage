@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $experience = sanitize($_POST['experience']);
 
   if (strlen($name) == 0 or strlen($email) == 0) {
-    header("Location: ../index.html");
+    header("Location: ../articles/deny_form.html");
     exit;
   }
   
@@ -18,14 +18,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $header = "New Signup from " . $name;
 
+  $description_array = array(
+    "1" => "I have no experience with programming of any form",
+    "2" => "I have some experience with scripting languages",
+    "3" => "I have some experience with compiled languages",
+    "4" => "I am experienced with procedural programming",
+    "5" => "I am an experienced programmer, but haven't used C++",
+  );
+
   $body = "Name: " . $name . "\n" 
-    . "Email: " . $email . "\n"
-    . "WS13: " . $ws13 . ", WS14: " . $ws14 . "\n"
-    . "Description: " . $description . "\n"
-    . "Experience: \n\n" . $experience . "\n";
+    . "Email: " . $email . "\nCourses: ";
+
+  if ($ws13 == "on") {
+    $body .= "WS13 "
+  }
+
+  if ($ws14 == "on") {
+    $body .= "WS14 "
+  }
+
+  $body .= "\n"
+    . "Description: " . $description_array[$description] . "\n\n"
+    . "Experience: \n" . $experience . "\n";
 
   mail($email_to, $header, $body);
-  header("Location: ../index.html");
+  header("Location: ../articles/accept_form.html");
 }
 
 function sanitize($data) {
