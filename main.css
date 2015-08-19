@@ -105,7 +105,25 @@ html, body {
   transition: all 500ms ease-in-out;
 }
 
+.link-icon {
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  font-size: 8px;
+  color: #283593;
+}
+
+.link-icon a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .content-card .collapse-icon {
+  display: block;
+}
+
+.link-card .link-icon {
   display: block;
 }
 
