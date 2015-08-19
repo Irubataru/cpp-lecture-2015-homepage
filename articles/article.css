@@ -25,6 +25,7 @@
 }
 
 .article-content {
+  position: relative;
   border-radius: 2px;
   padding: 80px 56px;
   margin-bottom: 80px;
@@ -50,4 +51,23 @@
 #the-footer {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+textarea[name="experience"] {
+  font-size: 14px;
+  font-weight: bold;
+  color: #424242;
+  resize: none;
+}
+
+#name, #email {
+  font-size: 16px;
+  font-weight: bold;
+  color: #424242;
+}
+
+button[type="submit"] {
+  position: absolute;
+  bottom: 30px;
+  right: 70px;
 }
