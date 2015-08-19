@@ -53,6 +53,12 @@
   padding-bottom: 10px;
 }
 
+footer.smallpage-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 textarea[name="experience"] {
   font-size: 14px;
   font-weight: bold;
