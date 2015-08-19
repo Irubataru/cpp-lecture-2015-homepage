@@ -135,3 +135,12 @@ html, body {
   transform: rotate(180deg);
   zoom: 1;
 }
+
+.mdl-mini-footer__right-section p {
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+  margin: 0;
+}
+
+
