@@ -1,15 +1,82 @@
+/* Main Styles */
+
 html, body {
   font-family:'Roboto','Helvetica','Arial',sans-serif;
 }
+
+/* Header Styles */
+
+.mdl-layout-title {
+  font-size: 26px;
+}
+
+#collapse-all {
+  position: absolute;
+  right: 40px;
+  top: 88px;
+  z-index: 999;
+  transition: all 500ms ease-in-out;
+}
+
+  #collapse-all.rotated {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    box-shadow: 0 -1px 1.5px 0 rgba(0,0,0,.12),
+     0 -1px 1px 0 rgba(0,0,0,.24);
+  }
+
+/* Body Styles */
+
+.page-content {
+  padding: 15px;
+}
+
+.section--center {
+  max-width: 1600px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/** Cards **/
 
 .mdl-card {
   min-height: 0px;
   margin: 0;
 }
 
-.fade {
-  display: none;
+.mdl-card__title {
+  background-color: #536DFE;
+  padding: 0 0 0 20px;
+  height: auto;
 }
+
+  .mdl-card__title h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #eee;
+  }
+
+.mdl-card__supporting-text {
+  box-sizing: border-box;
+  color: #333;
+}
+
+.content-card .collapse-icon {
+  display: block;
+}
+
+.card-icon {
+  display: none;
+  position: absolute;
+  font-size: 8px;
+  color: #283593;
+  right: 10px;
+}
+
+/*** Collapse Card ***/
 
 .collapse-card .fade {
   display: block;
@@ -21,119 +88,62 @@ html, body {
   left: 0;
 }
 
+  .collapse-card .mdl-card__supporting-text {
+    height: 200px;
+  }
+
+  .collapse-card .expand-button {
+    display: inline-block;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .collapse-icon.rotated{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+.fade {
+  display: none;
+}
+
 .expand-button {
   display: none;
 }
 
-.collapse-card .expand-button {
-  display: inline-block;
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
+.collapse-icon {
+  top: 40px;
+  transition: all 500ms ease-in-out;
 }
 
-.mdl-card__supporting-text {
-  box-sizing: border-box;
-  color: #333;
-}
-
-.collapse-card .mdl-card__supporting-text {
-  height: 200px;
-}
-
-.mdl-card__title {
-  background-color: #536DFE;
-  padding: 0 0 0 20px;
-  height: auto;
-}
-
-.mdl-card__title h1 {
-  font-size: 22px;
-  font-weight: bold;
-  color: #eee;
-}
-
-.section--center {
-  max-width: 1600px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.mdl-layout-title {
-  font-size: 26px;
-}
-
-.page-content {
-  padding: 15px;
-}
+/** Link Card **/
 
 .link-card a {
   text-decoration: none;
-}
-
-#the-footer {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-#collapse-all {
-  position: absolute;
-  right: 40px;
-  top: 88px;
-  z-index: 999;
-  transition: all 500ms ease-in-out;
-  /*box-shadow: none;*/
-}
-#collapse-all.rotated {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-  zoom: 1;
-  box-shadow: 0 -1px 1.5px 0 rgba(0,0,0,.12),
-   0 -1px 1px 0 rgba(0,0,0,.24);
-}
-
-.collapse-icon {
-  display: none;
-  position: absolute;
-  top: 40px;
-  right: 10px;
-  font-size: 8px;
-  color: #283593;
-  transition: all 500ms ease-in-out;
-}
-
-.link-icon {
-  display: none;
-  position: absolute;
-  top: 25px;
-  right: 10px;
-  font-size: 8px;
-  color: #283593;
-}
-
-.link-icon a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.content-card .collapse-icon {
-  display: block;
 }
 
 .link-card .link-icon {
   display: block;
 }
 
-.collapse-icon.rotated{
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-  zoom: 1;
+.link-icon {
+  top: 25px;
+}
+
+  .link-icon a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+/* Footer Styles */
+
+#the-footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .mdl-mini-footer__right-section p {
@@ -142,5 +152,3 @@ html, body {
   bottom: 15px;
   margin: 0;
 }
-
-
