@@ -1,3 +1,11 @@
+/* Main Styles */
+
+html, body {
+  font-family:'Roboto','Helvetica','Arial',sans-serif;
+}
+
+/* Header Styles */
+
 .back-navigation {
   margin-left: 0;
   margin-right: 60px;
@@ -6,6 +14,8 @@
 .article-header .mdl-layout__header-row {
   padding-left: 10px;
 }
+
+/* Body Styles */
 
 .background-ribbon {
   width: 100%;
@@ -18,6 +28,7 @@
   margin-top: -35vh;
   flex-shrink: 0;
 }
+
 .article-container {
   max-width: 1600px;
   width: calc(100% - 16px);
@@ -32,21 +43,50 @@
   color: #333;
 }
 
-.article-content h1 {
-  font-size: 30px;
-  font-weight: 900;
-  padding-bottom: 10px;
-  border-bottom: 2px solid rgba(63,81,181,0.3);
+  .article-content h1 {
+    font-size: 30px;
+    font-weight: 900;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(63,81,181,0.3);
+  }
+
+  .article-content h2 {
+    font-size: 24px;
+    border-bottom: 1px solid #DDD;
+  }
+
+  .article-content h3 {
+    font-size: 20px;
+  }
+
+/** Form Styles **/
+
+.grid-form .mdl-radio {
+  display: block;
 }
 
-.article-content h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #DDD;
+.grid-form input, .grid-form textarea {
+  color: #424242;
+  font-weight: bold;
 }
 
-.article-content h3 {
-  font-size: 20px;
+#name, #email {
+  font-size: 16px;
 }
+
+textarea[name="experience"] {
+  font-size: 14px;
+  resize: none;
+}
+
+button[type="submit"] {
+  position: absolute;
+  bottom: 30px;
+  right: 70px;
+}
+
+
+/* Footer Styles */
 
 #the-footer {
   padding-top: 10px;
@@ -57,27 +97,4 @@ footer.smallpage-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-}
-
-textarea[name="experience"] {
-  font-size: 14px;
-  font-weight: bold;
-  color: #424242;
-  resize: none;
-}
-
-#name, #email {
-  font-size: 16px;
-  font-weight: bold;
-  color: #424242;
-}
-
-button[type="submit"] {
-  position: absolute;
-  bottom: 30px;
-  right: 70px;
-}
-
-.grid-form .mdl-radio {
-  display: block;
 }
