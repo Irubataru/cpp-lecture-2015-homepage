@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $description = sanitize($_POST['description']);
   $experience = sanitize($_POST['experience']);
 
-  if (strlen($name) == 0 or strlen($email) == 0) {
+  if ( empty($name) or empty($email) ) {
     header("Location: ../articles/deny_form.html");
     exit;
   }
@@ -46,36 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function sanitize($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-
-  if (IsInjected($data)) {
-    return "";
-  }
-
-  return $data;
-}
-
-function IsInjected($str)
-{
-    $injections = array('(\n+)',
-           '(\r+)',
-           '(\t+)',
-           '(%0A+)',
-           '(%0D+)',
-           '(%08+)',
-           '(%09+)'
-           );
-                
-    $inject = join('|', $injections);
-    $inject = "/$inject/i";
-     
-    if(preg_match($inject,$str)) {
-      return true;
-    } else {
-      return false;
-    }
+  return filter_var($data, FILTER_SANITIZE_STRING|FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
 
 ?>
