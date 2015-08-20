@@ -9,6 +9,9 @@
       $(this).siblings(".mdl-card__title").click();
     });
     $(".mdl-layout__tab-bar > a").click(reset_tab);
+    $(".mdl-layout__tab-bar a").click(function () {
+      window.location.hash = $(this).attr("href");
+    });
     $(".my-mail").hover(function(){
       $(this).attr("href", "mailto:" + ["glesaaen", "th.physik.uni-frankfurt.de"].join('@'));
     });
@@ -57,10 +60,10 @@
     if (!$(hash_string).length)
       return;
 
-    $(".mdl-layout__tab-bar .is-active").removeClass("is-active")
-      .siblings('a[href="' + hash_string + '"]').addClass("is-active");
-    $(".mdl-layout__tab-panel.is-active").removeClass("is-active")
-      .siblings(hash_string).addClass("is-active");
+    $(".mdl-layout__tab-bar .is-active").removeClass("is-active");
+    $('.mdl-layout__tab-bar a[href="' + hash_string + '"]').addClass("is-active");
+    $(".mdl-layout__tab-panel.is-active").removeClass("is-active");
+    $(".mdl-layout__tab-panel" + hash_string).addClass("is-active");
   }
 
   function reset_tab() {
