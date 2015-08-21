@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Some script constants
-exclude_files=("install.sh" "content.md")
+exclude_files=("install.sh" "content.md" ".*.swp")
 ssh_domain="th.physik.uni-frankfurt.de"
-website_folder="public_htm/"
+website_folder="public_html/"
 
 # Test if I am currently on the master branch
 master_branch="master"
