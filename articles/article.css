@@ -4,6 +4,10 @@ html, body {
   font-family:'Roboto','Helvetica','Arial',sans-serif;
 }
 
+body {
+  height: 100%;
+}
+
 /* Header Styles */
 
 .back-navigation {
@@ -91,10 +95,9 @@ button[type="submit"] {
 #the-footer {
   padding-top: 10px;
   padding-bottom: 10px;
+  align-items: center;
 }
 
-footer.smallpage-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.mdl-mini-footer__right-section p {
+  margin: 0;
 }
