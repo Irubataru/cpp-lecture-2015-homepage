@@ -73,7 +73,8 @@ html, body {
   }
 
   .mdl-card__supporting-text h2 {
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: bold;
     margin: 10px 0px;
     border-bottom: 1px solid #DDD;
   }
@@ -84,7 +85,7 @@ html, body {
 
 
   .mdl-card__supporting-text h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .mdl-card__supporting-text a {
@@ -165,6 +166,12 @@ html, body {
     text-decoration: none;
     color: inherit;
   }
+
+/** Code **/
+code.cpp {
+  background-color: rgba(236,239,241,0.5);
+  padding: 0 20px;
+}
 
 /* Footer Styles */
 
