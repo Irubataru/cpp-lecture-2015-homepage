@@ -67,6 +67,24 @@ body {
     font-size: 18px;
   }
 
+  .article-content ul {
+    width: 80%;
+  }
+
+  .article-content p {
+    margin: 0 0 0 0;
+  }
+  
+  .article-content li p:last-child {
+    margin: 0 0 10px 0;
+  }
+
+  .article-content a {
+    text-decoration: none;
+    color: #3D5AFE;
+  }
+
+
 /** Form Styles **/
 
 .grid-form .mdl-radio {
