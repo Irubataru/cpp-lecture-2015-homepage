@@ -129,9 +129,9 @@
                 <p> <a href="https://msdn.microsoft.com/en-us/vstudio/hh386302.aspx">Visual C++</a> </p>
                 <p>
                   Finally we have the standard Windows C++ compiler. This will be the default compiler in use if you install one
-                  of Microsoft's IDEs such as <a href="https://www.visualstudio.com/">Visual Studio</a>. This compiler has
-                  unfortunately been lagging behind the others for the past couple of years, and will not support all of the
-                  features of the new standards, along with the new standard libraries.
+                  of Microsoft's IDEs such as <a href="https://www.visualstudio.com/">Visual Studio</a>. Microsoft has until
+                  recently been lacking behind with their C++ development, and it wasn't until VS 2015 that they picked up the
+                  slack.
                 </p>
               </li>
             </ul>
@@ -164,6 +164,31 @@
             </ul>
 
             <h3>Debugger</h3>
+
+            <p>
+              The final point on our list is a good debugger. A debugger is what you use when your program has successfully
+              compiled, but it doesn't do what you want it to when you run it, or it crashes unexpectedly.
+            </p>
+
+            <ul>
+              <li>
+                <p> <a href="http://www.gnu.org/software/gdb/">GDB</a> </p>
+                <p>
+                  Another GNU program, and another Linux default. GDB is a powerful debugger, but it requires some learning to use
+                  it effectively. There are also various GUI front ends available for GDB such as GDB's internal TUI, 
+                  <a href="http://www.gnu.org/software/ddd/">DDD</a> and <a href="https://wiki.gnome.org/Apps/Nemiver">Nemiver</a>.
+                </p>
+              </li>
+              <li>
+                <p> <a href="http://lldb.llvm.org/">LLDB</a> </p>
+                <p>
+                  You also have the LLDB, which is a debugger made by the llvm group, the same group who develops the clang
+                  compiler. LLDB has a very similar interface to GDB, but is slightly more user friendly and has a cleaner
+                  terminal interface. It also introduces practical tools such as automated commands at breakpoint stops.
+                </p>
+              </li>
+            </ul>
+
 
             <h2>Integrated Development Environments (IDEs)</h2>
           </div>
