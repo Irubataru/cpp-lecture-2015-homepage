@@ -60,7 +60,11 @@ body {
   }
 
   .article-content h3 {
-    font-size: 20px;
+    font-size: 22px;
+  }
+
+  .article-content h4 {
+    font-size: 18px;
   }
 
 /** Form Styles **/
