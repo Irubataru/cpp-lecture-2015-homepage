@@ -181,6 +181,10 @@ code.cpp {
   align-items: center;
 }
 
+.mdl-mini-footer__link-list li {
+  white-space: nowrap;
+}
+
 .mdl-mini-footer__right-section p {
   margin: 0;
 }
