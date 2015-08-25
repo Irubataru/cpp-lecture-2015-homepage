@@ -61,8 +61,9 @@ html, body {
 
 .mdl-card__supporting-text {
   box-sizing: border-box;
+  width: 100%;
   color: #333;
-  padding: 20px;
+  padding: 20px 30px;
 }
 
   .mdl-card__supporting-text h1 {
