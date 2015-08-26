@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     "2" => "I have some experience with scripting languages",
     "3" => "I have some experience with compiled languages",
     "4" => "I am experienced with procedural programming",
-    "5" => "I am an experienced programmer, but haven't used C++",
+    "5" => "I am an experienced programmer, but am not proficient in C++",
   );
 
   $body = "Name: " . $name . "\n" 
