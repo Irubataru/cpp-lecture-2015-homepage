@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercises Day 2</title>
+
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-indigo.min.css">
+    <link href='//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../external/highlight/styles/solarized_light.css">
+    <!--<link rel="stylesheet" href="../external/highlight/styles/github.css">-->
+    <link rel="stylesheet" href="../external/whhg/css/whhg.css">
+    <link rel="stylesheet" href="exercises.css">
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../external/highlight/highlight.pack.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="article-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <a href="../index.html#lecture-tab" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab back-navigation">
+              <i class="material-icons">arrow_back</i>
+          </a>
+          <span class="mdl-layout-title">Introductory Course to the C++ Programming Language</span>
+          <a href="pdf/exercises_day2.pdf"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored pdf-button">
+            PDF
+          </a>
+        </div>
+      </header>
+      <div class="background-ribbon"></div>
+      <main class="mdl-layout__content article-card">
+        <div class="article-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="article-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+            <h1>Exercises Day 2</h1>
+
+            <h2>Problem 1: Code refactoring</h2>
+            
+            <p>
+              Take one of the longer programs you wrote for the exercises on day 1 and divide it up into many small functions. Try to make sure
+              that every function you write has a single responsibility and that they are shorter than e.g. 10 lines.
+            </p>
+
+            <p>
+              Put the resulting code in an exteral "library" and set up your build system of choice (e.g. 
+              <code class="bash inline">make</code>) to compile and link your program.
+            </p>
+
+            <h2>Problem 2: Matrix Operations</h2>
+
+            <p>
+              Write a function that add two matrices together and somehow return the result. How would the function
+              signature have to be for that? While you are at it you can also implement matrix multiplication.
+            </p>
+
+            <h2>Problem 3: Array manipulation library</h2>
+
+            <p>
+              There is a large number of array manipulation functions one encounters regularly when programming. In 
+              this exercise we will write our own array library where we implement a lot of these useful features.
+              For now you can implement everything for arrays of integers for simplicity. Here is a list of the
+              desired functionality
+            </p>
+
+            <ul>
+              <li>Reversing an array</li>
+              <li>Pivoting an array around a specific point</li>
+              <li>Sorting an array (you can e.g. use the bubblesort algorithm, or quicksort if you are cool)</li>
+              <li>Searching for an integer in an unsorted array</li>
+              <li>Efficiently searching for an integer in a sorted array (recursively?)</li>
+              <li>Creating a new array with a filter</li>
+              <li>Making a version where the filter can be an arbitrary unary function</li>
+            </ul>
+
+            <h2>Problem 4: Interest rates</h2>
+
+            <p>
+              Picture for once a life in which you were really bad at mathematics but still wanted to be able to
+              keep track of your savings. How would it be possible to calculate interest rate on your savings
+              using recursive functions?
+            </p>
+
+            <ul>
+              <li>
+                Write a function that calculates your total savings after <code class="cpp inline">n</code> years
+                if you have a fixed interest rate and make additional deposits every year.
+              </li>
+            </ul>
+
+            <h2>Problem 5: Integration library</h2>
+
+            <p>
+              Write a small numerical integration library that can carry out simple one dimensional integrals.
+              Use whatever algorithm you feel like (forwards, backwards, midpoint, Simpson's). Come up with a
+              good function signature for these integration functions. What would you do if you wanted to pass
+              additional function parameters?
+            </p>
+
+            <h2>Problem 6: Hangman</h2>
+
+            <p>
+              Today's game of choice is hangman. Write a quick implementation. You probably need some sort of
+              database of possible nouns to use for your hangman game.
+            </p>
+
+          </div>
+        </div>
+      </main>
+      <footer class="mdl-mini-footer" id="the-footer">
+        <div class="mdl-mini-footer__left-section">
+          <div class="mdl-logo">Contact</div>
+          <ul class="mdl-mini-footer__link-list">
+            <li>
+              <a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored my-mail">
+                <i class="material-icons">email</i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Irubataru" target="_blank" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                <i class="icon-circlegithub"></i>
+              </a>
+            </li>
+            <li>Physics Building, Room 02.104</li>
+          </ul>
+        </div>
+        <div class="mdl-mini-footer__right-section">
+          <p>Jonas Rylund Glesaaen</p>
+        </div>
+      </footer>
+    </div>
+    <script src="../script/email.js"></script>
+  </body>
+</html>
