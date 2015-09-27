@@ -19,6 +19,13 @@ body {
   padding-left: 10px;
 }
 
+header .pdf-button {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+
+}
+
 /* Body Styles */
 
 .background-ribbon {
