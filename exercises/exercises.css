@@ -118,12 +118,17 @@ button[type="submit"] {
   right: 70px;
 }
 
-/* Code styles */
+/** Code **/
 
 code.inline {
-  display: inline
+  background-color: #fff;
+  display: inline;
 }
 
+pre code.Bash {
+  background-color: rgba(236,239,241,0.2);
+  padding: 0 20px;
+}
 
 /* Footer Styles */
 

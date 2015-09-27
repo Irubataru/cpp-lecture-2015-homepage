@@ -87,6 +87,8 @@ html, body {
 
   .mdl-card__supporting-text h3 {
     font-size: 18px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .mdl-card__supporting-text a {
@@ -156,6 +158,14 @@ html, body {
 .collapse-icon {
   top: 40px;
   transition: all 500ms ease-in-out;
+}
+
+/** Buttons **/
+
+.exercise-button {
+  width: 45%;
+  margin: 5px 5px;
+
 }
 
 /** Link Card **/
