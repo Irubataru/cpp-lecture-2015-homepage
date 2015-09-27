@@ -116,6 +116,12 @@ html, body {
   right: 10px;
 }
 
+.content-card > .mdl-card__actions, .mdl-card__supporting_text {
+  display: flex;
+  box-sizing:border-box;
+  align-items: center;
+}
+
 /*** Collapse Card ***/
 
 .collapse-card .fade {
