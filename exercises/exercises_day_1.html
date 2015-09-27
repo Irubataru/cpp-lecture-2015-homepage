@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercises Day 1</title>
+
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-indigo.min.css">
+    <link href='//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../external/highlight/styles/solarized_light_no_background.css">
+    <!--<link rel="stylesheet" href="../external/highlight/styles/github.css">-->
+    <link rel="stylesheet" href="../external/whhg/css/whhg.css">
+    <link rel="stylesheet" href="exercises.css">
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../external/highlight/highlight.pack.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="article-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <a href="../index.html#lecture-tab" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab back-navigation">
+              <i class="material-icons">arrow_back</i>
+          </a>
+          <span class="mdl-layout-title">Introductory Course to the C++ Programming Language</span>
+        </div>
+      </header>
+      <div class="background-ribbon"></div>
+      <main class="mdl-layout__content article-card">
+        <div class="article-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="article-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+            <h1>Exercises Day 1</h1>
+
+            <h2>Problem 1: Introductory Programs</h2>
+
+            <p>
+              To begin with we will get the compiler up and running and make sure we can compile a simple program. Assuming you are using the
+              GNU compiler for now, you can compile and run your program using the following commands
+            </p>
+
+            <pre><code class="Bash">g++ -o program code.cpp
+./program</code></pre>
+
+            <p>
+              One can pass compile flags to the compiler to tell it how it should compile, e.g. how strict it should be with warnings, whether
+              it should compile with debugging support and so on and so forth. Since we will make use of the C++11 syntax, we have to tell the
+              compiler that we are using the new standard. We can do this by calling
+            </p>
+
+            <pre><code class="Bash">g++ -o program -std=c++11 code.cpp
+./program</code></pre>
+
+            <ul class="task-list">
+              <li>Write a program that somehow makes use of the <code class="cpp inline">auto</code> keyword and have your program compile and run</li>
+              <li>Write a program that reads two integers from standard input and prints the sum of the two</li>
+            </ul>
+
+            <h2>Problem 2: Integers and float</h2>
+
+            <ul class="task-list">
+              <li>
+                Try multiplying together two numbers so that the result is larger than the largest 
+                <code class="cpp inline">int</code> and store the result in an <code class="cpp inline">int</code>, what happens?
+              </li>
+              <li>Try the same with a floating point type</li>
+              <li>Try dividing by zero and print the result</li>
+            </ul>
+
+            <p><em>Advanced:</em></p>
+
+            <p>
+              As you all know all data is stored in binary on a computer. For an unsigned 4bit integer this is of course done in the expected
+              way, so that the number 5 is stored as 0101. For floating point numbers, this is somewhat more advanced where parts of the
+              bit-content is dedicated to the decimals, and part of it is dedicated to the exponential factor. You can read more about this on
+              Wikipedia. In this exercise we will try to make a program that writes out the bit-content of the various built in types of C++.
+              This is most easily done with the bitwise operators in C++.
+            </p>
+
+            <h2>Problem 3: Infinite loops</h2>
+
+            <ul class="task-list">
+              <li>
+                Write an infinite loop that prints the number 42 to the terminal forever. Do this both with a 
+                <code class="cpp inline">for</code> loop and a <code class="cpp inline">while</code> loop.
+                <em>Hint: You can stop you program by pressing Ctrl-C</em>
+              </li>
+              <li>
+                Recreate the factorial function from the lecture using an infinite loop and a loop control statement
+                (<code class="cpp inline">break</code> or <code class="cpp inline">continue</code>)
+              </li>
+            </ul>
+
+            <h2>Problem 4: Checking for prime</h2>
+
+            <ul class="task-list">
+              <li>
+                Write a program that reads an integer from the terminal and checks whether the number is a prime or not
+              </li>
+              <li>
+                Make the program a bit more advance, and rather than simply checking whether it is a prime, also print out
+                the primes it can be factorised to
+              </li>
+            </ul>
+
+            <h2>Problem 5: Multi-dimensional arrays</h2>
+
+            <ul class="task-list">
+              <li>Write a small program that stores the 20x20 multiplication table in a 20x20 array</li>
+              <li>Write code so that the array is printed to the screen in some organised fashion</li>
+            </ul>
+
+            <h2>Problem 6: A game of Mastermind</h2>
+
+            <p>
+              Finally we will try to write a game of Mastermind. Mastermind is basically a board game where the "codemaker" sets up a
+              combination of 4 colours, and the player will try to guess those in 12 turns. With every guess the codemaker will tell the
+              player how many of their guesses are both the right colour and position, as well as how many additional colours are right, but in
+              the wrong position.
+            </p>
+
+            <ul class="task-list">
+              <li>Write a program that you can play mastermind with</li>
+            </ul>
+
+          </div>
+        </div>
+      </main>
+      <footer class="mdl-mini-footer" id="the-footer">
+        <div class="mdl-mini-footer__left-section">
+          <div class="mdl-logo">Contact</div>
+          <ul class="mdl-mini-footer__link-list">
+            <li>
+              <a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored my-mail">
+                <i class="material-icons">email</i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Irubataru" target="_blank" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                <i class="icon-circlegithub"></i>
+              </a>
+            </li>
+            <li>Physics Building, Room 02.104</li>
+          </ul>
+        </div>
+        <div class="mdl-mini-footer__right-section">
+          <p>Jonas Rylund Glesaaen</p>
+        </div>
+      </footer>
+    </div>
+    <script src="../script/email.js"></script>
+  </body>
+</html>
