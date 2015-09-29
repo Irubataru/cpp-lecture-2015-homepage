@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercises Day 3</title>
+
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-indigo.min.css">
+    <link href='//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../external/highlight/styles/solarized_light.css">
+    <!--<link rel="stylesheet" href="../external/highlight/styles/github.css">-->
+    <link rel="stylesheet" href="../external/whhg/css/whhg.css">
+    <link rel="stylesheet" href="exercises.css">
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../external/highlight/highlight.pack.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="article-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <a href="../index.html#lecture-tab" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab back-navigation">
+              <i class="material-icons">arrow_back</i>
+          </a>
+          <span class="mdl-layout-title">Introductory Course to the C++ Programming Language</span>
+          <a href="pdf/exercises_day3.pdf"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored pdf-button">
+            PDF
+          </a>
+        </div>
+      </header>
+      <div class="background-ribbon"></div>
+      <main class="mdl-layout__content article-card">
+        <div class="article-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="article-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+            <h1>Exercises Day 3</h1>
+
+            <h2>Problem 1: Matrix and vector classes</h2>
+
+            <p>
+              In this exercise we will create two classes, <code class="cpp inline">Vector</code> and
+              <code class="cpp inline">Matrix</code>, that can carry out basic array functionality as
+              well as the mathematical operations we expect from such objects.
+            </p>
+
+            <ul class="task-list">
+              <li>Create the two classes in question and set up their data stucture (privately)</li>
+              <li>Write suitable constructors and destructors</li>
+              <li>
+                <p>Create some sort of access operators, how would you solve that for the matrix?</p>
+                <p><em>Advanced:</em> </p>
+                <p>
+                Create a <code class="cpp inline">VectorView</code> class to read 
+                individual rows of the matrix, use this class to recreate the <code class="cpp inline">[][]</code>
+                syntax of normal multidimensional arrays
+                </p>
+              </li>
+              <li>
+                Create <code class="cpp inline">.size()</code> and <code class="cpp inline">.resize(...)</code>
+              </li>
+              <li>Make some convinient filling functions, such as zero to zero, or the identity</li>
+              <li>
+                Add other functions you feel your objects should have, such as <code class="cpp inline">.norm()</code>
+                and <code class="cpp inline">.transpose()</code>
+              </li>
+              <li>
+                <p>
+                Now it is time to overload the various arithmetic operators, <code class="cpp inline">+, -, *, /</code>
+                </p>
+                <p>How does this work with combined expressions? <code class="cpp inline">(a+b)*c</code></p>
+              </li>
+            </ul>
+
+            <h2>Problem 2: Address book</h2>
+
+            <p>
+              In this exercise we will implement an address book where all the entries are sorted based on the
+              contact's name. To store the addresses we will create a linked list storage class.
+            </p>
+
+            <ul>
+              <li>
+                Create the <code class="cpp inline">AddressBookEntry</code> class / struct. Every address should
+                at least have a name, and address and a phone number. Decide how you want to store the various
+                pieces of information and which ones you feel are important
+              </li>
+              <li>Implement the necessary boolean operators so that you can later compare entries</li>
+            </ul>
+
+            <p>
+              Next we will make the linked list to store the entries. A linked list consists of two classes.
+              The overlying control structure that will manage the list interface
+              (<code class="cpp inline">LinkedList</code>), and nodes that contain the linked list data 
+              (<code class="cpp inline">LinkedListNode</code>).  The liked list doesn't keep an array of
+              the nodes, only the first node of the list, then every node contains its data along with some
+              sort of way to pointing to the next node in the chain.
+            </p>
+
+            <ul>
+              <li>
+                Create the <code class="cpp inline">LinkedListNode</code> class and give it data, a member
+                function to access the underlying data as well as <code class="cpp inline">.next()</code>
+                and <code class="cpp inline">.last()</code> functions
+              </li>
+              <li>
+                Create the <code class="cpp inline">LinkedList</code> class that work as an outer interface
+                and enables functionality such as <code class="cpp inline">.insert()</code>,
+                <code class="cpp inline">.remove()</code>, <code class="cpp inline">.search()</code>
+              </li>
+              <li>
+                Adapt this to work for you <code class="cpp inline">AddressBook</code> class so that you have
+                a working address book that is sorted and can be manipulated
+              </li>
+            </ul>
+
+            <h2>Problem 3: Minesweeper</h2>
+
+            <p>
+              Finally we will implement a terminal based minesweeper game. There are many ways of structuring
+              your code to implement this, but here are a couple of classes you can start out with:
+            </p>
+
+            <ul>
+              <li>
+                A <code class="cpp inline">Minesweeper</code> class that encapsulates the game. It should be
+                able to parse input and make those into commands on the game board. It should also manage looping
+                until a win or loose condition is met along with tying the other parts of the game together
+              </li>
+              <li>
+                A <code class="cpp inline">MinesweeperBoard</code> class that keeps track of the mines on the
+                board as well as the mine adjacency number (the one that says how many mines surround an empty tile)
+              </li>
+              <li>
+                A <code class="cpp inline">MinesweeperMask</code> class that works as a mask in top of the board.
+                It is the layer that is between the board and the player and it contains information such as whether
+                a tile is open or closed as well as whether the player has made a guess on the tile
+              </li>
+            </ul>
+
+            <p>
+              Sit down and think about how these objects would interact with each other before you start programming,
+              and as you write code you might realise that more helper classes could be useful (e.g. a separate IO layer). 
+            </p>
+
+            <p>
+              <em> Advanced:</em> If you have played minesweeper before, you know that if you open a tile that has no
+              adjacent mines, the game will automatically also open all adjacent tiles. How can you implement a similar
+              feature in your program using recursion?
+            </p>
+
+            <p>
+            <em> Advanced:</em> Another feature you might want is the option to "control click" an opened tile. In
+            minesweeper this works so that if a tile has the number one on it, and you as a player has made a
+            sufficient amount of guesses around it, the game will open all the other nodes for you. This is also
+            a cascading effect.
+            </p>
+
+          </div>
+        </div>
+      </main>
+      <footer class="mdl-mini-footer" id="the-footer">
+        <div class="mdl-mini-footer__left-section">
+          <div class="mdl-logo">Contact</div>
+          <ul class="mdl-mini-footer__link-list">
+            <li>
+              <a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored my-mail">
+                <i class="material-icons">email</i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Irubataru" target="_blank" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                <i class="icon-circlegithub"></i>
+              </a>
+            </li>
+            <li>Physics Building, Room 02.104</li>
+          </ul>
+        </div>
+        <div class="mdl-mini-footer__right-section">
+          <p>Jonas Rylund Glesaaen</p>
+        </div>
+      </footer>
+    </div>
+    <script src="../script/email.js"></script>
+  </body>
+</html>
