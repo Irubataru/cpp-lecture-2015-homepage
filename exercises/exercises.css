@@ -66,6 +66,10 @@ header .pdf-button {
     border-bottom: 1px solid #DDD;
   }
 
+    .article-content h2 code {
+      padding: 6px 6px;
+    }
+
   .article-content h3 {
     font-size: 22px;
   }
@@ -128,9 +132,10 @@ button[type="submit"] {
 code.inline {
   background-color: #fff;
   display: inline;
+  padding: 0 5px;
 }
 
-pre code.Bash {
+pre code.Bash, pre code.cpp {
   background-color: rgba(236,239,241,0.2);
   padding: 0 20px;
 }
