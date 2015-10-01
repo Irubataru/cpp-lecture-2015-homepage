@@ -111,6 +111,22 @@ button[type="submit"] {
   right: 70px;
 }
 
+/** Code **/
+
+.article-content code {
+  background-color: rgba(236,239,241,0.2);
+}
+
+code.inline {
+  background-color: #fff;
+  display: inline;
+  padding: 0 5px;
+}
+
+pre code.Bash, pre code.cpp {
+  padding: 0 20px;
+}
+
 
 /* Footer Styles */
 

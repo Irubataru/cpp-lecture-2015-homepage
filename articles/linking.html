@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linking</title>
+
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-indigo.min.css">
+    <link href='//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../external/highlight/styles/solarized_light.css">
+    <link rel="stylesheet" href="../external/whhg/css/whhg.css">
+    <link rel="stylesheet" href="article.css">
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../external/highlight/highlight.pack.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="article-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <a href="../index.html#resource-tab" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab back-navigation">
+              <i class="material-icons">arrow_back</i>
+          </a>
+          <span class="mdl-layout-title">Introductory Course to the C++ Programming Language</span>
+        </div>
+      </header>
+      <div class="background-ribbon"></div>
+      <main class="mdl-layout__content article-card">
+        <div class="article-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="article-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+
+            <h1>Linking your programs</h1>
+
+            At some point in your programming carreer you probably want to include a library other than the standard libraries so
+            that you can make use of the work of others. Although it is technically possible to copy external libraries into every
+            project you create that needs them, one generally wants to put these libraries in a general location where every
+            project can find them and share them. The first time you do this you might then encounter linking errors because you
+            don't know how to tell your linker (or compiler) where it can find this new library. This article will address that issue.
+
+            <h2>Local files</h2>
+
+            In the course we covered local linking. That is when you yourself have organised your code into multiple source files,
+            and the process of putting all those source files into a single executable is called linking.
+
+            <h3>Header files</h3>
+
+            To include your own header files you have to use the <pre><code class="cpp">#include"file.hpp"</code></pre> macro, where
+            the quotation marks signal that the compiler should look for this locally, in the same folder as the source file is
+            in. You can of course move around with relative pathing as you would expect, so that e.g. to find a header file in a
+            subfolder you could use <pre><code class="cpp">#include"folder/file.hpp"</code></pre>
+
+            <h3>Source files</h3>
+            
+            To link all your source files together to a single executable we compile the source files into separate object files (machine
+            code) first, and then we link them together afterwards. With two source files source1.cpp and source2.cpp, this could
+            e.g. be done with the commands
+
+            <pre><code class="cpp">g++ -o source1.o -c source1.cpp
+g++ -o source2.o -c source2.cpp
+g++ -o program source1.o source2.o</code></pre>
+
+            This can of course be automated with a build system such as make. A simple sample makefile can be found on the
+            course's github page:
+            <a href="https://github.com/Irubataru/cpp-lecture-2015/blob/master/Utilites/Makefile" target="_blank">Makefile</a>.
+
+            <h2>Shared libraries</h2>
+
+            This far everything is quite easy, but what should we do if we want to include object files from external libraries as
+            well as their header files? We need some way of telling our compiler where to find the files we want.
+
+            <h3>Files provided by a shared library</h3>
+
+            <p>
+              When downloading a shared library you might notice that it normally comes with two types of files. Header files, which
+              are just like the header files you would write yourself, and library files. The library files normally have filetypes
+              such as <code class="inline">.a</code> and <code class="inline">.so</code> (and <code class="inline">.dylib</code>
+              for OSX). These library files are actually similar to the object files you create when you compile, except that they
+              have packaged many of these inside of a single library archive.
+            </p>
+
+            <p>
+              If you are installing an external library on your computer, or your system administrator has installed them for your
+              work PC, the shared library files normally end up inside the <code class="inline">/usr</code> hierarchy. This means
+              that the header files end up in <code class="inline">/usr/include</code> (possibly in a subfolder), and the library
+              files that contain the complied source code end up in <code class="inline">/usr/lib</code>.
+            </p> 
+            <p>
+              E.g. the default install location for the <a href="http://boost.org" target="_blank">boost</a> library is header files in:
+
+              <pre><code>/usr/include/boost</code></pre>
+
+              and the library files are put in
+
+              <pre><code>/usr/lib</code></pre>
+
+              Thus the boost library will install library files such as:
+
+              <pre><code>/usr/lib/libboost_chrono.so
+/usr/lib/libboost_filesystem.so
+/usr/lib/libboost_regex.so</code></pre>
+
+              and header files such as
+
+              <pre><code>/usr/include/boost/lexical_cast.hpp
+/usr/include/boost/filesystem.hpp
+/usr/include/boost/regex/regex_traits.hpp</code></pre>
+            </p>
+
+            <h3>Including library header files</h3>
+
+            When you want to include system header files in your C++ code you normally write
+
+            <pre><code class="cpp">#include &ltiostream&gt</code></pre>
+
+            <p>
+              But where is the <code class="inline">iostream</code> file actually located? It is located in one of the default
+              include paths for the compiler. These are of course compiler and system dependent, but it is possible for us to add
+              more paths for the compiler to look. Assume for now that you installed the boost library inside of 
+              <code class="inline">/home/user/.usr</code>, and in your case this is not a part of your compiler's default search
+              path. This means that when you write
+
+              <pre><code class="cpp">#include &ltboost/lexical_cast.hpp&gt</code></pre>
+
+              in your source files, the compiler will complain that it cannot find the file <code class="inline">lexical_cast.hpp</code>
+              in any of the directories it looked. We can however fix this by telling the compiler where it can find the file we
+              want to include. This can be done with the <code class="inline">-I</code> compiler flag in the following way:
+
+              <pre><code>g++ -o source.o -c -I/home/user/.usr/include source.cpp</code></pre>
+
+              This goes into the compilation step of building your program, so the moment you are creating the object files that
+              later will be linked. You can of course specify multiple extra locations for the compiler to look by simply chaining
+              these <code class="inline">-I</code> flags
+
+              <pre><code>g++ -o source.o -c -I/home/user/.usr/include -I/opt/boost/include source.cpp</code></pre>
+            </p>
+
+            <h3>Linking with shared libraries</h3>
+
+            <p>
+              So far we have been able to include the header files so that we can get the library's function and class declarations
+              into our program. The next issue is that when you then later try to link your program, the linker will complain that
+              it can't find the definitions of the functions you got from the header files. This is because the libraries object
+              files (these <code class="inline">.a</code> and <code class="inline">.so</code> files) haven't been linked with our
+              own object files yet.
+            </p>
+
+            <p>
+              The first naive thing that might come to your mind is to simply add these library files to the linking command, so
+              that linking with a boost module could be written as
+
+              <pre><code>g++ -o program source1.o source2.o /usr/lib/libboost_regex.so</code></pre>
+
+              This does actually work, however it is a bit tedious, and not very portable if you want to compile your program on
+              different platforms. The solution the compiler provides us is implemented with two flags: 
+              <code class="inline">-l</code> and <code class="inline">-L</code>. <code class="inline">-l</code> is simply a
+              convenience flag for the compiler, and is a way it contract filenames. The compiler expects all library files to be named
+              either <code class="inline">lib*.a</code> or <code class="inline">lib*.so</code> (or something similar), and thus
+              the flag <code class="inline">-lboost_regex</code> is just a shorthand for the file name
+              <code class="inline">libboost_regex.so</code>
+            </p>
+
+            <p>
+              So with this flag we can tell the compiler which library file to link, but we still need to tell it where to look
+              for the files. Symmetric to how the <code class="inline">-I</code> flag works, the <code class="inline">-L</code>
+              flag tells the linker where to look for the library files. Thus if we wanted to link the boost regex library to our
+              program, and we had installed boost in <code class="inline">/home/user/.usr</code>, we could write
+
+              <pre><code>g++ -o program -L/home/user/.usr/lib source1.o source2.o -lboost_regex</code></pre>
+
+              Notice here that the <code class="inline">-l</code> and <code class="inline">-L</code> flags are flags for the
+              linker, not the compiler, so we can leave these out when compiling our own sources.
+            </p>
+
+          </div>
+        </div>
+      </main>
+      <footer class="mdl-mini-footer" id="the-footer">
+        <div class="mdl-mini-footer__left-section">
+          <div class="mdl-logo">Contact</div>
+          <ul class="mdl-mini-footer__link-list">
+            <li>
+              <a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored my-mail">
+                <i class="material-icons">email</i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Irubataru" target="_blank" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                <i class="icon-circlegithub"></i>
+              </a>
+            </li>
+            <li>Physics Building, Room 02.104</li>
+          </ul>
+        </div>
+        <div class="mdl-mini-footer__right-section">
+          <p>Jonas Rylund Glesaaen</p>
+        </div>
+      </footer>
+    </div>
+    <script src="../script/email.js"></script>
+  </body>
+</html>
